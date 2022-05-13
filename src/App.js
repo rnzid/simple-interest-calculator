@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import CssBaseline from '@mui/material/CssBaseline';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
@@ -20,8 +19,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Button } from '@mui/material';
+import { TextField } from '@mui/material';
+import { useState } from 'react';
+import './index.css';
 
 const drawerWidth = 240;
+
+
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -80,6 +84,13 @@ export default function PersistentDrawerRight() {
     setOpen(false);
   };
 
+const [P, setP] = useState(0)
+const [T, setT] = useState(0)
+const [R, setR] = useState(0)
+const [si, setSi] = useState(0)
+const calculateInterest = ()=>{
+  setSi(P*T*R/100)
+}
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -95,11 +106,22 @@ export default function PersistentDrawerRight() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            News
+            Simple Interest
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
+      <br/>
+      <div>
+      <TextField onChange={(event)=>setP(event.target.value)} id="outlined-basic" label="Enter P" variant="outlined" />
+      <TextField onChange={(event)=>setT(event.target.value)} id="outlined-basic" label="Enter T" variant="outlined" />
+      <TextField onChange={(event)=>setR(event.target.value)} id="outlined-basic" label="Enter R" variant="outlined" />
+      <br/>
+      <br/>
+      <Button onClick={()=>calculateInterest()} variant='contained'>Calculate</Button>
+<Typography variant='h6' glutterBotton component="div">simple Interest is : {si}</Typography>
+      </div>
+
       <Drawer
         sx={{
           width: drawerWidth,
