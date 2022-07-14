@@ -116,6 +116,7 @@ const calculateInterest = ()=>{
       <TextField onChange={(event)=>setP(event.target.value)} id="outlined-basic" label="Enter P" variant="outlined" />
       <TextField onChange={(event)=>setT(event.target.value)} id="outlined-basic" label="Enter T" variant="outlined" />
       <TextField onChange={(event)=>setR(event.target.value)} id="outlined-basic" label="Enter R" variant="outlined" />
+      <TextField></TextField>
       <br/>
       <br/>
       <Button onClick={()=>calculateInterest()} variant='contained'>Calculate</Button>
